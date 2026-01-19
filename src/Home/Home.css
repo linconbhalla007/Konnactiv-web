@@ -208,17 +208,10 @@
   margin-left: 20px;
 }
 
-.form-label {
-  color: #1e1e1e;
-  font-family: "DM Sans";
-  font-size: 14px;
-  line-height: 100%;
-}
-
 input::placeholder,
 textarea::placeholder,
 select::placeholder {
-  color: #b3b3b3;
+  color: #8c8c8c;
   font-family: "DM Sans";
   line-height: 100%;
 }
@@ -322,6 +315,46 @@ select::placeholder {
   font-size: 12px;
   font-weight: 500;
   line-height: 100%;
+}
+
+.gender-container {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.gender-option {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #8c8c8c;
+  font-family: "DM Sans";
+  line-height: 100%;
+}
+
+.gender-option input {
+  display: none;
+}
+
+.custom-radio {
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid #8c8c8c;
+  border-radius: 50%;
+  margin-right: 8px;
+  position: relative;
+}
+
+.gender-option input:checked + .custom-radio::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #181d24;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .success-text {
@@ -449,5 +482,19 @@ select::placeholder {
   .success-text {
     font-size: 18px;
     line-height: 24px;
+  }
+
+  .gender-option {
+    font-size: 14px;
+  }
+
+  .custom-radio {
+    width: 16px;
+    height: 16px;
+  }
+
+  .gender-option input:checked + .custom-radio::after {
+    width: 8px;
+    height: 8px;
   }
 }

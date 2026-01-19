@@ -43,10 +43,10 @@ const products = [
 
 const useContactForm = () => {
   const [formData, setFormData] = useState({
+    gender: "",
     name: "",
     phone: "",
     email: "",
-    industry: "",
     company: "",
     description: "",
   });
@@ -55,27 +55,17 @@ const useContactForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (e: any) => {
-    console.log(e);
-
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const validate = () => {
     const newErrors = {};
 
-    if (!formData.name.trim()) newErrors.name = "Name is required";
-    if (!formData.phone.trim()) newErrors.phone = "Telefon is required";
-
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
+      newErrors.email = "Pflichtfeld";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email";
+      newErrors.email = "Pflichtfeld";
     }
-
-    if (!formData.company.trim()) newErrors.company = "Company is required";
-
-    if (!formData.description.trim())
-      newErrors.description = "Description is required";
 
     return newErrors;
   };
@@ -104,51 +94,51 @@ const SuccessView = () => {
     <div className="d-flex justify-content-center align-items-center flex-column mt-3">
       <img src={checkCircle} alt="checkCircle" />
       <span className="success-text mt-3">
-        Thank you for contacting us. Our cable expert will contact you in next
-        24hrs.
+        Vielen Dank für Ihre Anfrage. Wir melden uns innerhalb von 24 Stunden
+        bei Ihnen zurück.
       </span>
     </div>
   );
 };
 
-const ContactFormWeb = () => {
+export const ContactFormWeb = () => {
   const { formData, errors, isSubmitted, handleChange, handleSubmit } =
     useContactForm();
   const [fileName, setFileName] = useState("");
+
   if (isSubmitted) return <SuccessView />;
   return (
     <form className="contact-form" onSubmit={handleSubmit}>
+      <div className="gender-container">
+        {["Herr", "Frau", "Divers"].map((item) => (
+          <label key={item} className="gender-option">
+            <input
+              type="radio"
+              name="gender"
+              value={item}
+              checked={formData.gender === item}
+              onChange={handleChange}
+            />
+            <span className="custom-radio"></span>
+            {item}
+          </label>
+        ))}
+      </div>
       <div className="form-group w-100">
-        <label className="form-label">Name</label>
         <input
           type="text"
-          placeholder="Your Name"
+          placeholder="Name"
           value={formData.name}
           onChange={handleChange}
           name="name"
-          className={errors.name ? "input-error" : ""}
         />
-        {errors.name && <span className="error-text">{errors.name}</span>}
       </div>
 
       <div className="form-row">
         <div className="form-group">
-          <label className="form-label">Telefon</label>
-          <input
-            type="text"
-            placeholder="+49 999999999"
-            value={formData.phone}
-            onChange={handleChange}
-            name="phone"
-            className={errors.phone ? "input-error" : ""}
-          />
-          {errors.phone && <span className="error-text">{errors.phone}</span>}
-        </div>
-        <div className="form-group">
-          <label className="form-label">Email</label>
           <input
             type="email"
-            placeholder="john@company.com"
+            placeholder="Email*"
             value={formData.email}
             onChange={handleChange}
             name="email"
@@ -156,50 +146,34 @@ const ContactFormWeb = () => {
           />
           {errors.email && <span className="error-text">{errors.email}</span>}
         </div>
-      </div>
-
-      <div className="form-row">
         <div className="form-group">
-          <label className="form-label">Industrie (Optional)</label>
-          <select
-            value={formData.industry}
-            onChange={handleChange}
-            name="industry"
-          >
-            <option>Select</option>
-            <option>Automotive</option>
-            <option>Medical</option>
-            <option>Industrial</option>
-          </select>
-        </div>
-        <div className="form-group">
-          <label className="form-label">Firma</label>
           <input
             type="text"
-            placeholder="Your Company Name"
-            value={formData.company}
+            placeholder="Telefon"
+            value={formData.phone}
             onChange={handleChange}
-            name="company"
-            className={errors.company ? "input-error" : ""}
+            name="phone"
           />
-          {errors.company && (
-            <span className="error-text">{errors.company}</span>
-          )}
         </div>
+      </div>
+
+      <div className="form-group">
+        <input
+          type="text"
+          placeholder="Firma"
+          value={formData.company}
+          onChange={handleChange}
+          name="company"
+        />
       </div>
 
       <div className="form-group w-100">
-        <label className="form-label">Projekt Beschreibung</label>
         <textarea
-          placeholder="Teilen Sie uns Ihre Kabelanforderungen mit"
+          placeholder="Ihre Nachricht"
           value={formData.description}
           onChange={handleChange}
           name="description"
-          className={errors.description ? "input-error" : ""}
         ></textarea>
-        {errors.description && (
-          <span className="error-text">{errors.description}</span>
-        )}
       </div>
 
       <div className="upload">
@@ -220,7 +194,7 @@ const ContactFormWeb = () => {
       <button className="submit-btn">Einreichen</button>
 
       <span className="file-max-size">
-        Wir antworten normalerweise innerhalb von einem Werktag.
+        Mit Absenden akzeptieren Sie unsere AGB.
       </span>
     </form>
   );
@@ -235,36 +209,35 @@ const ContactFormMobile = () => {
 
   return (
     <form className="contact-form mt-52" onSubmit={handleSubmit}>
+      <div className="gender-container">
+        {["Herr", "Frau", "Divers"].map((item) => (
+          <label key={item} className="gender-option">
+            <input
+              type="radio"
+              name="gender"
+              value={item}
+              checked={formData.gender === item}
+              onChange={handleChange}
+            />
+            <span className="custom-radio"></span>
+            {item}
+          </label>
+        ))}
+      </div>
       <div className="form-group">
-        <label className="form-label">Name</label>
         <input
           type="text"
-          placeholder="Your Name"
+          placeholder="Name"
           value={formData.name}
           onChange={handleChange}
           name="name"
-          className={errors.name ? "input-error" : ""}
         />
-        {errors.name && <span className="error-text">{errors.name}</span>}
       </div>
 
       <div className="form-group">
-        <label className="form-label">Telefon</label>
-        <input
-          type="text"
-          placeholder="+49 999999999"
-          value={formData.phone}
-          onChange={handleChange}
-          name="phone"
-          className={errors.phone ? "input-error" : ""}
-        />
-        {errors.phone && <span className="error-text">{errors.phone}</span>}
-      </div>
-      <div className="form-group">
-        <label className="form-label">Email</label>
         <input
           type="email"
-          placeholder="john@company.com"
+          placeholder="Email*"
           value={formData.email}
           onChange={handleChange}
           name="email"
@@ -273,39 +246,31 @@ const ContactFormMobile = () => {
         {errors.email && <span className="error-text">{errors.email}</span>}
       </div>
       <div className="form-group">
-        <label className="form-label">Industrie (Optional)</label>
-        <select>
-          <option>Select</option>
-          <option>Automotive</option>
-          <option>Medical</option>
-          <option>Industrial</option>
-        </select>
-      </div>
-      <div className="form-group">
-        <label className="form-label">Firma</label>
         <input
           type="text"
-          placeholder="Your Company Name"
+          placeholder="Telefon"
+          value={formData.phone}
+          onChange={handleChange}
+          name="phone"
+        />
+      </div>
+      <div className="form-group">
+        <input
+          type="text"
+          placeholder="Firma"
           value={formData.company}
           onChange={handleChange}
           name="company"
-          className={errors.company ? "input-error" : ""}
         />
-        {errors.company && <span className="error-text">{errors.company}</span>}
       </div>
 
-      <div className="form-group">
-        <label className="form-label">Projekt Beschreibung</label>
+      <div className="form-group w-100">
         <textarea
-          placeholder="Teilen Sie uns Ihre Kabelanforderungen mit"
+          placeholder="Ihre Nachricht"
           value={formData.description}
           onChange={handleChange}
           name="description"
-          className={errors.description ? "input-error" : ""}
         ></textarea>
-        {errors.description && (
-          <span className="error-text">{errors.description}</span>
-        )}
       </div>
 
       <div className="upload">
@@ -326,7 +291,7 @@ const ContactFormMobile = () => {
       <button className="submit-btn">Einreichen</button>
 
       <span className="file-max-size">
-        Wir antworten normalerweise innerhalb von einem Werktag.
+        Mit Absenden akzeptieren Sie unsere AGB.
       </span>
     </form>
   );

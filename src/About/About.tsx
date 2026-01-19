@@ -17,10 +17,15 @@ import dot from "../assets/images/dot.svg";
 import services from "../assets/images/services.svg";
 import servicesMobile from "../assets/images/services-mobile.svg";
 import useWindowWidth from "../hooks/useWindowWidth";
+import { useNavigate } from "react-router-dom";
 
 export default function About() {
   const width = useWindowWidth();
   const isMobile = width < 768;
+  const navigate = useNavigate();
+  const handleContactClick = () => {
+    navigate("/", { state: { scrollTo: "contact" } });
+  };
   return (
     <>
       {!isMobile ? (
@@ -43,7 +48,7 @@ export default function About() {
                 Our mission, vision, and values guide our daily actions.
               </span>
 
-              <button className="btn-about-cable">Jetzt Anfragen</button>
+              <button className="btn-about-cable" onClick={handleContactClick}>Jetzt Anfragen</button>
             </div>
           </section>
 
@@ -342,7 +347,7 @@ export default function About() {
                 Our mission, vision, and values guide our daily actions.
               </span>
 
-              <button className="btn-about-cable mt-4 w-100">
+              <button className="btn-about-cable mt-4 w-100" onClick={handleContactClick}>
                 Jetzt Anfragen
               </button>
             </div>
