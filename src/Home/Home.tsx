@@ -17,6 +17,9 @@ import Header from "../Header/Header";
 import useWindowWidth from "../hooks/useWindowWidth";
 import { useLocation, useNavigate } from "react-router-dom";
 
+import useContactForm from "../hooks/useContactForm";
+import useEmailService from "../services/useEmail";
+
 const products = [
   {
     id: 1,
@@ -41,54 +44,6 @@ const products = [
   },
 ];
 
-const useContactForm = () => {
-  const [formData, setFormData] = useState({
-    gender: "",
-    name: "",
-    phone: "",
-    email: "",
-    company: "",
-    description: "",
-  });
-
-  const [errors, setErrors] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleChange = (e: any) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const validate = () => {
-    const newErrors = {};
-
-    if (!formData.email.trim()) {
-      newErrors.email = "Pflichtfeld";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Pflichtfeld";
-    }
-
-    return newErrors;
-  };
-
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    const validationErrors = validate();
-    setErrors(validationErrors);
-
-    if (Object.keys(validationErrors).length === 0) {
-      setIsSubmitted(true);
-    }
-  };
-
-  return {
-    formData,
-    errors,
-    isSubmitted,
-    handleChange,
-    handleSubmit,
-  };
-};
-
 const SuccessView = () => {
   return (
     <div className="d-flex justify-content-center align-items-center flex-column mt-3">
@@ -101,14 +56,38 @@ const SuccessView = () => {
   );
 };
 
+const Loader = () => (
+  <div className="d-flex justify-content-center align-items-center">
+    <div className="spinner-border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </div>
+  </div>
+);
+
 export const ContactFormWeb = () => {
-  const { formData, errors, isSubmitted, handleChange, handleSubmit } =
-    useContactForm();
+  const {
+    formData,
+    errors,
+    isSubmitted,
+    handleChange,
+    handleSubmit,
+    setIsSubmitted,
+  } = useContactForm();
+  const { handleFormSubmit, form, isLoading } = useEmailService();
   const [fileName, setFileName] = useState("");
 
+  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    handleSubmit(e, () => {
+      handleFormSubmit(e, () => {
+        setIsSubmitted(true);
+      });
+    });
+  };
+
+  if (isLoading) return <Loader />;
   if (isSubmitted) return <SuccessView />;
   return (
-    <form className="contact-form" onSubmit={handleSubmit}>
+    <form className="contact-form" onSubmit={onFormSubmit} ref={form}>
       <div className="gender-container">
         {["Herr", "Frau", "Divers"].map((item) => (
           <label key={item} className="gender-option">
@@ -201,14 +180,32 @@ export const ContactFormWeb = () => {
 };
 
 const ContactFormMobile = () => {
-  const { formData, errors, isSubmitted, handleChange, handleSubmit } =
-    useContactForm();
+  const {
+    formData,
+    errors,
+    isSubmitted,
+    handleChange,
+    handleSubmit,
+    setIsSubmitted,
+  } = useContactForm();
+
+  const { form, handleFormSubmit, isLoading } = useEmailService();
 
   const [fileName, setFileName] = useState("");
+
+  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    handleSubmit(e, () => {
+      handleFormSubmit(e, () => {
+        setIsSubmitted(true);
+      });
+    });
+  };
+
+  if (isLoading) return <Loader />;
   if (isSubmitted) return <SuccessView />;
 
   return (
-    <form className="contact-form mt-52" onSubmit={handleSubmit}>
+    <form className="contact-form mt-52" onSubmit={onFormSubmit} ref={form}>
       <div className="gender-container">
         {["Herr", "Frau", "Divers"].map((item) => (
           <label key={item} className="gender-option">
@@ -367,10 +364,10 @@ export default function Home() {
             </div>
 
             <div className="carousel-wrapper">
-              <img src={leftArrow} alt="leftArrow" className="arrow left" />
+              <img src={leftArrow} alt="leftArrow" className="arrow left" onClick={prev} />
 
               <div className="d-flex align-items-center product-container">
-                {products.map((item, i) => (
+                {products.map((item) => (
                   <div className="d-flex flex-column" key={item.id}>
                     <div className="image-box">
                       <img src={item.img} alt={item.title} />
@@ -383,7 +380,7 @@ export default function Home() {
                 ))}
               </div>
 
-              <img src={rightArrow} alt="rightArrow" className="arrow right" />
+              <img src={rightArrow} alt="rightArrow" className="arrow right" onClick={next} />
             </div>
           </section>
 

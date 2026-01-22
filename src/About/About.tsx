@@ -21,63 +21,17 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import checkCircle from "../assets/images/check-circle.svg";
 import file from "../assets/images/file.svg";
-import cross from "../assets/images/cross.svg"; 
+import cross from "../assets/images/cross.svg";
+import useContactForm from "../hooks/useContactForm";
+import useEmailService from "../services/useEmail";
 
 export default function About() {
   const width = useWindowWidth();
   const isMobile = width < 768;
   const navigate = useNavigate();
-  const handleContactClick = () => {
-    navigate("/", { state: { scrollTo: "contact" } });
-  };
-    const [isContactOpen, setIsContactOpen] = useState(false);
+
+  const [isContactOpen, setIsContactOpen] = useState(false);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-
-  const useContactForm = () => {
-    const [formData, setFormData] = useState({
-      gender: "",
-      name: "",
-      phone: "",
-      email: "",
-      company: "",
-      description: "",
-    });
-
-    const [errors, setErrors] = useState({});
-
-    const handleChange = (e: any) => {
-      setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    const validate = () => {
-      const newErrors = {};
-
-      if (!formData.email.trim()) {
-        newErrors.email = "Pflichtfeld";
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-        newErrors.email = "Pflichtfeld";
-      }
-
-      return newErrors;
-    };
-
-    const handleSubmit = (e, onSuccess) => {
-      e.preventDefault();
-      const validationErrors = validate();
-      setErrors(validationErrors);
-
-      if (Object.keys(validationErrors).length === 0) {
-        onSuccess();
-      }
-    };
-
-    return {
-      formData,
-      errors,
-      handleChange,
-      handleSubmit,
-    };
-  };
 
   const SuccessView = () => {
     return (
@@ -91,14 +45,24 @@ export default function About() {
     );
   };
 
-  const ContactFormWeb = ({ onSuccess }) => {
+  const ContactFormWeb = ({ onSuccess }: { onSuccess: () => void }) => {
     const { formData, errors, handleChange, handleSubmit } = useContactForm();
+    const { form, handleFormSubmit } = useEmailService();
     const [fileName, setFileName] = useState("");
+
+    const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+      handleSubmit(e, () => {
+        handleFormSubmit(e, () => {
+          onSuccess();
+        });
+      });
+    };
 
     return (
       <form
         className="contact-form mt-34"
-        onSubmit={(e) => handleSubmit(e, onSuccess)}
+        onSubmit={onFormSubmit}
+        ref={form}
       >
         <div className="gender-container">
           {["Herr", "Frau", "Divers"].map((item) => (
@@ -200,15 +164,24 @@ export default function About() {
     );
   };
 
-  const ContactFormMobile = ({ onSuccess }) => {
+  const ContactFormMobile = ({ onSuccess }: { onSuccess: () => void }) => {
     const { formData, errors, handleChange, handleSubmit } = useContactForm();
-
+    const { form, handleFormSubmit } = useEmailService();
     const [fileName, setFileName] = useState("");
+
+    const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+      handleSubmit(e, () => {
+        handleFormSubmit(e, () => {
+          onSuccess();
+        });
+      });
+    };
 
     return (
       <form
         className="contact-form mt-52"
-        onSubmit={(e) => handleSubmit(e, onSuccess)}
+        onSubmit={onFormSubmit}
+        ref={form}
       >
         <div className="gender-container">
           {["Herr", "Frau", "Divers"].map((item) => (
