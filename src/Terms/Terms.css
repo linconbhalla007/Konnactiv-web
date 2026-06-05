@@ -1,0 +1,104 @@
+.terms-page {
+  background: #fff;
+}
+
+.terms-hero {
+  background: #e8edf1;
+  padding: 96px 0 92px;
+}
+
+.terms-hero h1 {
+  color: #151515;
+  font-family: "DM Sans", sans-serif;
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1.28;
+  letter-spacing: 0;
+  max-width: 1096px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.terms-content {
+  max-width: 1096px;
+  margin: 0 auto;
+  padding: 78px 0 72px;
+}
+
+.terms-row {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 80px;
+  padding: 31px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.terms-row:first-child {
+  padding-top: 0;
+}
+
+.terms-row:last-child {
+  border-bottom: none;
+}
+
+.terms-row h2 {
+  color: #151515;
+  font-family: "DM Sans", sans-serif;
+  font-size: 27px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0;
+  margin: 0;
+}
+
+.terms-copy {
+  color: rgba(10, 10, 10, 0.7);
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.terms-copy p {
+  margin: 0 0 9px;
+}
+
+.terms-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.terms-copy strong {
+  color: #151515;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .terms-hero {
+    padding: 56px 20px;
+  }
+
+  .terms-hero h1 {
+    font-size: 28px;
+    line-height: 40px;
+    max-width: none;
+  }
+
+  .terms-content {
+    padding: 40px 20px 20px;
+  }
+
+  .terms-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 28px 0;
+  }
+
+  .terms-row h2 {
+    font-size: 22px;
+    line-height: 30px;
+  }
+
+  .terms-copy {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
