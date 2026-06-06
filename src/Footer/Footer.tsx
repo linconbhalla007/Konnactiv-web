@@ -1,7 +1,6 @@
 import "./Footer.css";
 import konnactivLogo from "../assets/images/Konnactiv-Logo.svg";
 import { Link } from "react-router-dom";
-import facebook from "../assets/images/facebook.svg";
 import instagram from "../assets/images/instagram.svg";
 import linkedin from "../assets/images/linkedin.svg";
 import useWindowWidth from "../hooks/useWindowWidth";
@@ -9,6 +8,7 @@ import useWindowWidth from "../hooks/useWindowWidth";
 export default function Footer() {
   const width = useWindowWidth();
   const isMobile = width < 768;
+
   return (
     <footer className="footer">
       <div className="footer-top">
@@ -17,14 +17,14 @@ export default function Footer() {
         <div className="footer-divider"></div>
 
         <nav className="footer-nav">
-          <Link to="/" className="footer-nav-bar-text">
+          <Link to="/about" className="footer-nav-bar-text">
             Über Uns
           </Link>
-          <Link to="/products" className="footer-nav-bar-text">
-            produkte
+          <Link to="/" className="footer-nav-bar-text">
+            Produkte & Leistungen
           </Link>
-          <Link to="/contact" className="footer-nav-bar-text">
-            Contact
+          <Link to="/" className="footer-nav-bar-text">
+            Impressum
           </Link>
         </nav>
 
@@ -35,7 +35,6 @@ export default function Footer() {
         <div className="footer-socials">
           <img src={linkedin} alt="linkedin" />
           <img src={instagram} alt="instagram" />
-          <img src={facebook} alt="facebook" />
         </div>
       </div>
 
@@ -49,10 +48,10 @@ export default function Footer() {
         </span>
 
         <div className="footer-legal">
-          <Link to="/" className="copyright-text">
+          <Link to="/privacy-policy" className="copyright-text">
             Privacy Policy
           </Link>
-          <Link to="/products" className="copyright-text">
+          <Link to="/terms" className="copyright-text">
             Terms of Service
           </Link>
           <Link to="/contact" className="copyright-text">
