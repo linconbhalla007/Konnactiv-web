@@ -1,0 +1,153 @@
+.privacy-policy {
+  background: #ffffff;
+}
+
+/* HERO SECTION */
+.privacy-hero {
+  background: #e8edf1;
+  padding: 80px 88px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.privacy-hero h1 {
+  margin: 0;
+
+  color: #151515;
+  font-family: "DM Sans", sans-serif;
+  font-size: 46px;
+  font-weight: 300;
+  line-height: 64px;
+  letter-spacing: 0.02em;
+}
+
+.privacy-date {
+  margin: 0;
+
+  color: rgba(10, 10, 10, 0.7);
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.privacy-intro {
+  width: 794px;
+  max-width: 100%;
+  margin: 0;
+
+  color: rgba(10, 10, 10, 0.7);
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+/* TABLE SECTION */
+.privacy-table {
+  background: #ffffff;
+  padding: 0 88px 80px;
+}
+
+.privacy-row {
+  display: grid;
+  grid-template-columns: 216px 723px;
+  column-gap: 80px;
+
+  padding: 40px 0;
+
+  border-top: 1px solid #e5e5e5;
+}
+
+.privacy-row:first-child {
+  border-top: none;
+}
+
+.privacy-left {
+  color: #0a0a0a;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 40px;
+}
+
+.privacy-right {
+  width: 723px;
+  max-width: 100%;
+
+  color: rgba(10, 10, 10, 0.7);
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.privacy-right strong {
+  color: #0a0a0a;
+  font-weight: 700;
+}
+
+.privacy-right p {
+  margin: 0 0 8px;
+}
+
+.privacy-right p:last-child {
+  margin-bottom: 0;
+}
+
+.privacy-right ul {
+  margin: 8px 0;
+  padding-left: 18px;
+}
+
+.privacy-right li {
+  line-height: 28px;
+  margin-bottom: 0;
+}
+
+.privacy-right br {
+  line-height: 28px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .privacy-hero {
+    padding: 56px 20px;
+    gap: 20px;
+  }
+
+  .privacy-hero h1 {
+    font-size: 36px;
+    line-height: 48px;
+  }
+
+  .privacy-date,
+  .privacy-intro {
+    font-size: 16px;
+    line-height: 28px;
+  }
+
+  .privacy-table {
+    padding: 0 20px 40px;
+  }
+
+  .privacy-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 24px 0;
+  }
+
+  .privacy-left {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .privacy-right {
+    width: 100%;
+    font-size: 16px;
+    line-height: 28px;
+  }
+}

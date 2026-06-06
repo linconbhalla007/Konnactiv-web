@@ -48,7 +48,7 @@ export default function Footer() {
         </span>
 
         <div className="footer-legal">
-          <Link to="/" className="copyright-text">
+          <Link to="/privacy-policy" className="copyright-text">
             Privacy Policy
           </Link>
           <Link to="/terms" className="copyright-text">
