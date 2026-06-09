@@ -327,7 +327,7 @@ export default function Header() {
                 isActive ? "nav-bar-text active" : "nav-bar-text"
               }
             >
-              Produkte
+              Produkte & Leistungen
             </NavLink>
             <button
               className="btn-header"
@@ -371,7 +371,7 @@ export default function Header() {
               }
               onClick={() => setIsMenuOpen(false)}
             >
-              Produkte
+              Produkte & Leistungen
             </NavLink>
             <button
               className="btn-header"

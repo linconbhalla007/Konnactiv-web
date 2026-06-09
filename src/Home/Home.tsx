@@ -15,8 +15,7 @@ import { useEffect, useState } from "react";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import useWindowWidth from "../hooks/useWindowWidth";
-import { useLocation, useNavigate } from "react-router-dom";
-
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useContactForm from "../hooks/useContactForm";
 import useEmailService from "../services/useEmail";
 
@@ -360,7 +359,9 @@ export default function Home() {
               <span className="production-text">
                 Unser Angebot an Produktionslösungen
               </span>
-              <button className="all-products-btn">Alle Produkte</button>
+              <Link to="/products">
+                <button className="all-products-btn">Alle Produkte</button>
+              </Link>
             </div>
 
             <div className="carousel-wrapper">
@@ -525,7 +526,9 @@ export default function Home() {
               </div>
             </div>
 
-            <button className="all-products-btn w-100">Alle Produkte</button>
+            <Link to="/products">
+              <button className="all-products-btn w-100">Alle Produkte</button>
+            </Link>
           </section>
 
           <div>

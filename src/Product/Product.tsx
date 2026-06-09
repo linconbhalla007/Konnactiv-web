@@ -8,12 +8,16 @@ import product1 from "../assets/images/product1.svg";
 import product2 from "../assets/images/product2.svg";
 import product3 from "../assets/images/product3.svg";
 import product4 from "../assets/images/product4.svg";
-
+import nagivate from "../assets/images/arrow-up-right.svg";
 import iso from "../assets/images/iso.svg";
 import ul from "../assets/images/ul.svg";
 import rohs from "../assets/images/rohs.svg";
 import reach from "../assets/images/reach.svg";
 import ipc from "../assets/images/ipc.svg";
+import cross from "../assets/images/cross.svg";
+import checkCircle from "../assets/images/check-circle.svg";
+import file from "../assets/images/file.svg";
+import useWindowWidth from "../hooks/useWindowWidth";
 
 export default function Product() {
     const [selectedCard, setSelectedCard] = useState<any>(null);
@@ -108,6 +112,7 @@ export default function Product() {
     ];
 
     const [activeAccordion, setActiveAccordion] = useState<number | null>(0);
+    const [isContactOpen, setIsContactOpen] = useState(false);
 
     const accordionData = [
         {
@@ -230,6 +235,99 @@ export default function Product() {
         },
     ];
 
+    const width = useWindowWidth();
+    const isMobile = width < 768;
+    const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+
+    const SuccessView = () => (
+        <div className="d-flex justify-content-center align-items-center flex-column mt-3">
+            <img src={checkCircle} alt="checkCircle" />
+            <span className="success-text mt-3">
+                Vielen Dank für Ihre Anfrage. Wir melden uns innerhalb von 24 Stunden
+                bei Ihnen zurück.
+            </span>
+        </div>
+    );
+
+    const ContactForm = ({ onSuccess }: { onSuccess: () => void }) => {
+        const [fileName, setFileName] = useState("");
+
+        return (
+            <form className="contact-form mt-34">
+                <div className="gender-container">
+                    {["Herr", "Frau", "Divers"].map((item) => (
+                        <label key={item} className="gender-option">
+                            <input type="radio" name="gender" value={item} />
+                            <span className="custom-radio"></span>
+                            {item}
+                        </label>
+                    ))}
+                </div>
+
+                <div className="form-group w-100">
+                    <input type="text" placeholder="Name" name="name" />
+                </div>
+
+                <div className={isMobile ? "form-group" : "form-row"}>
+                    <div className="form-group">
+                        <input type="email" placeholder="Email*" name="email" />
+                    </div>
+
+                    <div className="form-group">
+                        <input type="text" placeholder="Telefon" name="phone" />
+                    </div>
+                </div>
+
+                <div className="form-group w-100">
+                    <input type="text" placeholder="Firma" name="company" />
+                </div>
+
+                <div className="form-group w-100">
+                    <textarea placeholder="Ihre Nachricht" name="description"></textarea>
+                </div>
+
+                <div className="upload">
+                    <label className="upload-btn">
+                        <img src={file} alt="file" />
+                        <span>Anhang</span>
+                        <input
+                            type="file"
+                            hidden
+                            onChange={(e) => setFileName(e.target.files?.[0]?.name || "")}
+                        />
+                    </label>
+                    <span className="file-name-text">{fileName || "(Optional)"}</span>
+                </div>
+
+                <span className="file-max-size">
+                    Die maximale Dateigröße beträgt 10 MB.
+                </span>
+
+                <div className="form-actions">
+                    <button
+                        type="button"
+                        className={`submit-btn-header ${isMobile ? "w-100" : "w-50"}`}
+                        onClick={onSuccess}
+                    >
+                        Einreichen
+                    </button>
+
+                    <button
+                        type="button"
+                        className={`btn-cancel ${isMobile ? "w-100" : "w-50"}`}
+                        onClick={() => setIsContactOpen(false)}
+                    >
+                        Abbrechen
+                    </button>
+                </div>
+
+                <span className="file-max-size">
+                    Mit Absenden akzeptieren Sie unsere AGB.
+                </span>
+            </form>
+        );
+    };
+
     return (
         <>
             <Header />
@@ -246,13 +344,13 @@ export default function Product() {
                             key={item.title}
                             onClick={() => setSelectedCard(item)}
                         >
-                            <img src={item.image} alt={item.title} />
+                            <img src={item.image} alt={item.title} className="product-card-img" />
 
                             <span className="product-card-title">{item.title}</span>
 
                             <span className="product-card-para">{item.text}</span>
 
-                            <span className="product-card-arrow">↗</span>
+                            <img src={nagivate} alt="nagivate" className="navigate-img" />
                         </div>
                     ))}
 
@@ -380,12 +478,45 @@ export default function Product() {
                     Submit a technical inquiry for cable assemblies or wire harnesses. Our engineering team will review your requirements and provide a detailed proposal.
                 </span>
 
-                <button className="btn-about-cable">Jetzt Anfragen</button>
+                <button
+                    className="btn-about-cable"
+                    onClick={() => {
+                        setIsFormSubmitted(false);
+                        setIsContactOpen(true);
+                    }}
+                >
+                    Jetzt Anfragen
+                </button>
                 <span className="technical-footer mt-2">
                     Drawings, specifications, or samples can be provided
                 </span>
             </section>
             <Footer />
+
+            {isContactOpen && (
+                <div className="modal-overlay">
+                    <div className="modal-container">
+                        <img
+                            src={cross}
+                            alt="close"
+                            className="modal-close cursor-pointer"
+                            onClick={() => setIsContactOpen(false)}
+                        />
+
+                        {!isFormSubmitted && (
+                            <span className="modal-title-form">
+                                Senden Sie uns bitte Ihre Anfrage
+                            </span>
+                        )}
+
+                        {isFormSubmitted ? (
+                            <SuccessView />
+                        ) : (
+                            <ContactForm onSuccess={() => setIsFormSubmitted(true)} />
+                        )}
+                    </div>
+                </div>
+            )}
         </>
     );
 }

@@ -21,10 +21,10 @@ export default function Footer() {
             Über Uns
           </Link>
           <Link to="/products" className="footer-nav-bar-text">
-            produkte
+            Produkte & Leistungen
           </Link>
           <Link to="/contact" className="footer-nav-bar-text">
-            Contact
+            Impressum
           </Link>
         </nav>
 
