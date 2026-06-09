@@ -49,14 +49,11 @@ export default function Footer() {
         </span>
 
         <div className="footer-legal">
-          <Link to="/" className="copyright-text">
-            Privacy Policy
+          <Link to="/privacy-policy" className="copyright-text">
+            Datenschutzerklärung
           </Link>
-          <Link to="/products" className="copyright-text">
-            Terms of Service
-          </Link>
-          <Link to="/contact" className="copyright-text">
-            Quality Standards
+          <Link to="/terms-and-conditions" className="copyright-text">
+            Allgemeine Geschäftsbedingungen
           </Link>
         </div>
       </div>

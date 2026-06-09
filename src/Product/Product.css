@@ -1,0 +1,346 @@
+.product-main-section {
+    padding: 56px 88px 80px 88px;
+    background: #E8EDF1;
+}
+
+.product-main-title {
+    color: #151515;
+    font-family: "DM Sans";
+    font-size: 46px;
+    line-height: 64px;
+    letter-spacing: 0.02em;
+    display: block;
+    max-width: 633px;
+}
+
+.product-card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-top: 44px;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 13.14px;
+}
+
+.product-card img {
+    width: 100%;
+    height: 246px;
+    object-fit: cover;
+    background: #FFFFFF;
+}
+
+.product-card-title {
+    color: rgba(10, 10, 10, 1);
+    font-family: "DM Sans";
+    font-size: 20px;
+    line-height: 28px;
+}
+
+.product-card-para {
+    color: rgba(10, 10, 10, 0.7);
+    font-family: "DM Sans";
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.product-card-arrow {
+    color: #3ea0ff;
+    font-size: 22px;
+}
+
+.expertise-section {
+    padding: 80px 88px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.expertise-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.expertise-left {
+    max-width: 560px;
+}
+
+.expertise-title {
+    display: block;
+    color: #0A0A0A;
+    font-family: "DM Sans";
+    font-size: 34px;
+    line-height: 40px;
+    margin-top: 21px;
+}
+
+.expertise-para {
+    display: block;
+    color: rgba(10, 10, 10, 0.7);
+    font-family: "DM Sans";
+    font-size: 16px;
+    line-height: 28px;
+    margin-top: 21px;
+}
+
+.expertise-image-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 40px;
+}
+
+.expertise-img {
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    object-fit: contain;
+}
+
+.components-section {
+    padding: 80px 88px;
+    background: #e8edf1;
+    text-align: center;
+}
+
+.components-title {
+    display: block;
+    color: #0a0a0a;
+    font-family: "DM Sans";
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 40px;
+}
+
+.components-para {
+    display: block;
+    margin-top: 12px;
+    color: rgba(10, 10, 10, 0.7);
+    font-family: "DM Sans";
+    font-size: 16px;
+    line-height: 28px;
+}
+
+.components-grid {
+    margin: 48px auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.component-box {
+    background: #fff;
+    border: 1px solid #dcdcdc;
+    height: 106px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 16px;
+
+    color: #0a0a0a;
+    font-family: "DM Sans";
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    text-align: center;
+}
+
+.quality-section {
+    padding: 64px 88px;
+    background: #fff;
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    gap: 80px;
+    align-items: flex-start;
+}
+
+.quality-title {
+    display: block;
+    color: #0a0a0a;
+    font-family: "DM Sans";
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+}
+
+.quality-para {
+    display: block;
+    max-width: 520px;
+    margin-top: 24px;
+    color: rgba(10, 10, 10, 0.7);
+    font-family: "DM Sans";
+    font-size: 16px;
+    line-height: 28px;
+}
+
+.quality-icons {
+    display: grid;
+    grid-template-columns: repeat(3, 80px);
+    gap: 40px 56px;
+    justify-content: start;
+    align-items: center;
+}
+
+.quality-icons img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.technical-section {
+    padding: 80px 336px;
+    background: #E8EDF1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.technical-title {
+    color: #0A0A0A;
+    font-family: "DM Sans";
+    font-size: 34px;
+    line-height: 40px;
+    margin-top: 24px;
+}
+
+.technical-para {
+    max-width: 740px;
+    margin-top: 16px;
+    color: rgba(10, 10, 10, 0.7);
+    font-family: "DM Sans";
+    line-height: 28px;
+}
+
+.technical-footer {
+    font-family: "DM Sans";
+    color: rgba(140, 140, 140, 1);
+}
+
+.product-accordion-section {
+    background: #fff;
+}
+
+.accordion-item {
+    border-bottom: 1px solid #d0d0d0;
+}
+
+.accordion-header {
+    display: grid;
+    grid-template-columns: 280px 1fr 40px;
+    gap: 40px;
+    padding: 32px 88px;
+    align-items: flex-start;
+}
+
+.accordion-title {
+    color: #151515;
+    font-family: "DM Sans";
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+}
+
+.accordion-right-content {
+    max-width: 760px;
+}
+
+.accordion-description,
+.accordion-expanded {
+    color: rgba(10, 10, 10, 0.7);
+    font-family: "DM Sans";
+    font-size: 15px;
+    line-height: 28px;
+}
+
+.accordion-expanded {
+    margin-top: 20px;
+}
+
+.accordion-expanded p {
+    margin: 0 0 20px;
+}
+
+.accordion-expanded h6 {
+    color: #151515;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 24px 0 12px;
+}
+
+.accordion-expanded ul {
+    margin: 0 0 24px;
+    padding-left: 20px;
+}
+
+.accordion-expanded li {
+    margin-bottom: 6px;
+}
+
+.accordion-icon {
+    background: transparent;
+    border: none;
+    color: #151515;
+    font-size: 28px;
+    line-height: 28px;
+    cursor: pointer;
+}
+
+.product-card {
+    cursor: pointer;
+}
+
+.product-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(232, 237, 241, 0.75);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 120px;
+}
+
+.product-popup {
+    position: relative;
+    width: 620px;
+    min-height: 520px;
+    background: #fff;
+    padding: 56px 52px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.product-popup-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #151515;
+}
+
+.product-popup h3 {
+    color: #151515;
+    font-family: "DM Sans";
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 20px;
+}
+
+.product-popup-content {
+    color: rgba(10, 10, 10, 0.7);
+    font-family: "DM Sans";
+    font-size: 15px;
+    line-height: 28px;
+}
+
+.product-popup-content p {
+    margin-bottom: 20px;
+}
