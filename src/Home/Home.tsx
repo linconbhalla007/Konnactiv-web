@@ -162,7 +162,7 @@ export const ContactFormWeb = () => {
           <input
             type="file"
             hidden
-            onChange={(e) => setFileName(e.target.files[0]?.name || "")}
+            onChange={(e) => setFileName(e.target.files?.[0]?.name || "")}
           />
         </label>
         <span className="file-name-text">{fileName || "(Optional)"}</span>
@@ -277,7 +277,7 @@ const ContactFormMobile = () => {
           <input
             type="file"
             hidden
-            onChange={(e) => setFileName(e.target.files[0]?.name || "")}
+            onChange={(e) => setFileName(e.target.files?.[0]?.name || "")}
           />
         </label>
         <span className="file-name-text">{fileName || "(Optional)"}</span>
