@@ -6,6 +6,7 @@ import About from './About/About';
 import Product from './Product/Product';
 import PrivacyPolicy from './PrivacyPolicy/PrivacyPolicy';
 import TermsAndConditions from './TermsAndConditions/TermsAndConditions';
+import Impressum from './Impressum/Impressum';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/products" element={<Product />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+      <Route path="/contact-details" element={<Impressum />} />
     </Routes>
   );
 }

@@ -23,7 +23,7 @@ export default function Footer() {
           <Link to="/products" className="footer-nav-bar-text">
             Produkte & Leistungen
           </Link>
-          <Link to="/contact" className="footer-nav-bar-text">
+          <Link to="/contact-details" className="footer-nav-bar-text">
             Impressum
           </Link>
         </nav>
