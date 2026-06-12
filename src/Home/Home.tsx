@@ -1,46 +1,43 @@
 import "./Home.css";
 import cable from "../assets/images/cable.png";
-import flatRibbon from "../assets/images/flat-ribbon-cable.png";
-import singleStrands from "../assets/images/single-strands.png";
-import dataCable from "../assets/images/data-cable.png";
 import cableConnector from "../assets/images/cable-connector.png";
 import email from "../assets/images/email.svg";
 import phone from "../assets/images/phone.svg";
 import location from "../assets/images/location.svg";
 import file from "../assets/images/file.svg";
-import leftArrow from "../assets/images/left-arrow.svg";
-import rightArrow from "../assets/images/right-arrow.svg";
 import checkCircle from "../assets/images/check-circle.svg";
 import { useEffect, useState } from "react";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import useWindowWidth from "../hooks/useWindowWidth";
-import { useLocation, useNavigate } from "react-router-dom";
-
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useContactForm from "../hooks/useContactForm";
 import useEmailService from "../services/useEmail";
+import product1 from "../assets/images/product1.svg";
+import product2 from "../assets/images/product2.svg";
+import product3 from "../assets/images/product3.svg";
+import product4 from "../assets/images/product4.svg";
 
 const products = [
   {
     id: 1,
-    tag: "Flat Ribbon Cable",
-    title: "Modular cables",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    img: `${flatRibbon}`,
+    title: "Kabelkonfektionen",
+    img: product4,
   },
   {
     id: 2,
-    tag: "Single strands",
-    title: "Modular cables",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-    img: `${singleStrands}`,
+    title: "Kabelbäume",
+    img: product3,
   },
   {
     id: 3,
-    tag: "Data cable",
-    title: "Modular cables",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-    img: `${dataCable}`,
+    title: "Daten & Signalkabel",
+    img: product2,
+  },
+  {
+    id: 4,
+    title: "Prototypen",
+    img: product1,
   },
 ];
 
@@ -162,7 +159,7 @@ export const ContactFormWeb = () => {
           <input
             type="file"
             hidden
-            onChange={(e) => setFileName(e.target.files[0]?.name || "")}
+            onChange={(e) => setFileName(e.target.files?.[0]?.name || "")}
           />
         </label>
         <span className="file-name-text">{fileName || "(Optional)"}</span>
@@ -277,7 +274,7 @@ const ContactFormMobile = () => {
           <input
             type="file"
             hidden
-            onChange={(e) => setFileName(e.target.files[0]?.name || "")}
+            onChange={(e) => setFileName(e.target.files?.[0]?.name || "")}
           />
         </label>
         <span className="file-name-text">{fileName || "(Optional)"}</span>
@@ -352,37 +349,45 @@ export default function Home() {
           </div>
 
           <section className="production home-page-padding">
-            <div className="production-label">
-              <span className="horizontal-line mt-2"></span>
-              <span>Überblick</span>
-            </div>
-            <div className="production-header">
-              <span className="production-text">
-                Unser Angebot an Produktionslösungen
-              </span>
-              <button className="all-products-btn">Alle Produkte</button>
-            </div>
+  <div className="production-layout">
+    <div className="production-left">
+      <div className="production-label">
+        <span className="horizontal-line mt-2"></span>
+        <span>Überblick</span>
+      </div>
 
-            <div className="carousel-wrapper">
-              <img src={leftArrow} alt="leftArrow" className="arrow left" onClick={prev} />
+      <span className="production-text">
+        Unser Angebot an Produktionslösungen
+      </span>
 
-              <div className="d-flex align-items-center product-container">
-                {products.map((item) => (
-                  <div className="d-flex flex-column" key={item.id}>
-                    <div className="image-box">
-                      <img src={item.img} alt={item.title} />
-                    </div>
+      <span className="production-para">
+        Wir entwickeln und liefern maßgeschneiderte Kabelkonfektionen,
+        Baugruppen und Verbindungslösungen, die exakt auf komplexe technische
+        Anforderungen abgestimmt sind.
+      </span>
 
-                    <span className="product-tag">{item.tag}</span>
-                    <span className="product-title">{item.title}</span>
-                    <span className="cable-para product-desc">{item.desc}</span>
-                  </div>
-                ))}
-              </div>
+      <Link to="/products">
+        <button className="all-products-btn">
+          Kabelkonfektion ansehen
+        </button>
+      </Link>
+    </div>
 
-              <img src={rightArrow} alt="rightArrow" className="arrow right" onClick={next} />
-            </div>
-          </section>
+    <div className="production-grid">
+      {products.slice(0, 4).map((item) => (
+        <div className="production-card" key={item.id}>
+          <div className="production-image-box">
+            <img src={item.img} alt={item.title} />
+          </div>
+
+          <span className="production-card-title">
+            {item.title}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
           <section className="excellence">
             <div>
@@ -496,37 +501,42 @@ export default function Home() {
             </button>
           </div>
 
-          <section className="production">
-            <div className="production-label mb-3">
-              <span className="horizontal-line mt-2"></span>
-              <span>Überblick</span>
-            </div>
+        <section className="production">
+  <div className="production-label">
+    <span className="horizontal-line"></span>
+    <span>Überblick</span>
+  </div>
 
-            <span className="production-text">
-              Unser Angebot an Produktionslösungen
-            </span>
+  <h2 className="production-text">
+    Unser Angebot an Produktionslösungen
+  </h2>
 
-            <div className="mobile-carousel mt-4">
-              <div className="product-container">
-                {products.map((item) => (
-                  <div
-                    className="product-card-mobile d-flex flex-column"
-                    key={item.id}
-                  >
-                    <div className="image-box">
-                      <img src={item.img} alt={item.title} />
-                    </div>
+  <p className="production-para">
+    Wir entwickeln und liefern maßgeschneiderte Kabelkonfektionen,
+    Baugruppen und Verbindungslösungen, die exakt auf komplexe
+    technische Anforderungen abgestimmt sind.
+  </p>
 
-                    <span className="product-tag">{item.tag}</span>
-                    <span className="product-title">{item.title}</span>
-                    <span className="cable-para product-desc">{item.desc}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+  <div className="production-grid">
+    {products.map((item) => (
+      <div className="production-card" key={item.id}>
+        <div className="production-image-box">
+          <img src={item.img} alt={item.title} />
+        </div>
 
-            <button className="all-products-btn w-100">Alle Produkte</button>
-          </section>
+        <span className="production-card-title">
+          {item.title}
+        </span>
+      </div>
+    ))}
+  </div>
+
+  <Link to="/products">
+    <button className="all-products-btn production-btn">
+      Kabelkonfektion ansehen
+    </button>
+  </Link>
+</section>
 
           <div>
             <img src={cableConnector} alt="Cable connector" className="w-100" />

@@ -28,7 +28,6 @@ import useEmailService from "../services/useEmail";
 export default function About() {
   const width = useWindowWidth();
   const isMobile = width < 768;
-  const navigate = useNavigate();
 
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
@@ -138,7 +137,7 @@ export default function About() {
             <input
               type="file"
               hidden
-              onChange={(e) => setFileName(e.target.files[0]?.name || "")}
+              onChange={(e) => setFileName(e.target.files?.[0]?.name || "")}
             />
           </label>
           <span className="file-name-text">{fileName || "(Optional)"}</span>
@@ -254,7 +253,7 @@ export default function About() {
             <input
               type="file"
               hidden
-              onChange={(e) => setFileName(e.target.files[0]?.name || "")}
+              onChange={(e) => setFileName(e.target.files?.[0]?.name || "")}
             />
           </label>
           <span className="file-name-text">{fileName || "(Optional)"}</span>

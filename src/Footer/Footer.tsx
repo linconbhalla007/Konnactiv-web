@@ -21,10 +21,10 @@ export default function Footer() {
             Über Uns
           </Link>
           <Link to="/products" className="footer-nav-bar-text">
-            produkte
+            Produkte & Leistungen
           </Link>
-          <Link to="/contact" className="footer-nav-bar-text">
-            Contact
+          <Link to="/contact-details" className="footer-nav-bar-text">
+            Impressum
           </Link>
         </nav>
 
@@ -49,14 +49,11 @@ export default function Footer() {
         </span>
 
         <div className="footer-legal">
-          <Link to="/" className="copyright-text">
-            Privacy Policy
+          <Link to="/privacy-policy" className="copyright-text">
+            Datenschutzerklärung
           </Link>
-          <Link to="/products" className="copyright-text">
-            Terms of Service
-          </Link>
-          <Link to="/contact" className="copyright-text">
-            Quality Standards
+          <Link to="/terms-and-conditions" className="copyright-text">
+            Allgemeine Geschäftsbedingungen
           </Link>
         </div>
       </div>

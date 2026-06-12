@@ -50,6 +50,17 @@
   margin-top: 80px;
 }
 
+.production-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.production-left {
+  max-width: 520px;
+}
+
 .production-label {
   display: flex;
   align-items: center;
@@ -67,19 +78,22 @@
   background: #151515;
 }
 
-.production-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-  margin-top: 24px;
-}
-
 .production-text {
+  display: block;
   color: #0a0a0a;
   font-family: "DM Sans";
   font-size: 34px;
   line-height: 40px;
+  margin-top: 24px;
+}
+
+.production-para {
+  display: block;
+  margin-top: 24px;
+  color: rgba(10, 10, 10, 0.7);
+  font-family: "DM Sans";
+  font-size: 16px;
+  line-height: 28px;
 }
 
 .all-products-btn {
@@ -91,62 +105,43 @@
   letter-spacing: 1.4px;
   background: transparent;
   border: 1px solid #181d24;
-  width: 164px;
+  width: 224px;
   height: 46px;
+  margin-top: 32px;
 }
 
-.carousel-wrapper {
-  position: relative;
+.production-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px 40px;
 }
 
-.product-container {
-  gap: 40px;
-}
-
-.image-box {
-  display: inline-flex;
-  height: 454px;
-  padding: 114px 29px 114px 10px;
+.production-card {
+  display: flex;
   flex-direction: column;
+}
+
+.production-image-box {
+  width: 100%;
+  height: 210px;
+  background: #efefef;
+  display: flex;
   justify-content: center;
   align-items: center;
-  background: #efefef;
 }
 
-.product-tag {
-  color: rgba(21, 21, 21, 0.6);
-  font-family: "DM Sans";
-  font-size: 12px;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: 0.24px;
-  margin-top: 24px;
+.production-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.product-title {
+.production-card-title {
+  margin-top: 12px;
   color: #0a0a0a;
   font-family: "DM Sans";
-  font-size: 24px;
+  font-size: 16px;
   line-height: 24px;
-  margin-top: 8px;
-}
-
-.product-desc {
-  margin-top: 15px;
-}
-
-.arrow {
-  position: absolute;
-  top: 35%;
-  cursor: pointer;
-}
-
-.arrow.left {
-  left: -40px;
-}
-
-.arrow.right {
-  right: -40px;
 }
 
 .excellence {
@@ -402,21 +397,100 @@ select::placeholder {
     padding: 33px 20px 56px 20px;
     background: #e8edf1;
   }
+.production {
+  padding: 56px 20px;
+  margin-top: 0;
+}
 
-  .production-label {
-    font-size: 14px;
-    letter-spacing: 0.7px;
-  }
+.production-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
 
-  .horizontal-line {
-    width: 42px;
-  }
+.horizontal-line {
+  width: 32px;
+  height: 1px;
+  background: #151515;
+}
 
-  .production-text {
-    font-size: 24px;
-    line-height: 32px;
-  }
+.production-label span:last-child {
+  font-family: "DM Sans";
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
 
+.production-text {
+  display: block;
+  margin: 0;
+  font-family: "DM Sans";
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  color: #0A0A0A;
+  max-width: 250px;
+}
+
+.production-para {
+  display: block;
+  margin-top: 24px;
+  margin-bottom: 32px;
+  color: rgba(10, 10, 10, 0.7);
+  font-family: "DM Sans";
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.production-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px 16px;
+  margin-top: 32px;
+}
+
+.production-image-box {
+  width: 100%;
+  height: 118px;
+  background: #efefef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.production-image-box img {
+  max-width: 86%;
+  max-height: 86%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.production-card-title {
+  margin-top: 8px;
+  color: #0a0a0a;
+  font-family: "DM Sans";
+  font-size: 13px;
+  line-height: 18px;
+  white-space: nowrap;
+}
+
+
+.production-card {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.production-btn {
+  width: 100%;
+  margin-top: 32px;
+  height: 46px;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+}
   .contact-section-mobile {
     padding: 56px 20px;
     border-bottom: 1px solid #d0d0d0;
@@ -432,51 +506,6 @@ select::placeholder {
 
   .mt-52 {
     margin-top: 52px;
-  }
-
-  .production {
-    padding: 56px 20px;
-    margin-top: 0;
-  }
-
-  .mobile-carousel {
-    overflow-x: auto;
-    padding-bottom: 12px;
-  }
-
-  .product-container {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .product-card-mobile {
-    min-width: 85%;
-    scroll-snap-align: start;
-  }
-
-  .image-box {
-    height: 360px;
-    padding: 90.399px 22.857px 90.191px 7.93px;
-  }
-
-  .product-tag {
-    margin-top: 16px;
-  }
-
-  .product-title {
-    font-size: 18px;
-    margin-top: 4px;
-  }
-
-  .product-desc {
-    margin-top: 13px;
-  }
-
-  .all-products-btn {
-    margin-top: 56px;
   }
 
   .success-text {

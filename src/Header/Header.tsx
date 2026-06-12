@@ -2,11 +2,19 @@ import "./Header.css";
 import konnactivLogo from "../assets/images/Konnactiv-Logo.svg";
 import sideBar from "../assets/images/side-bar.svg";
 import cross from "../assets/images/cross.svg";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useWindowWidth from "../hooks/useWindowWidth";
 import { useState } from "react";
 import checkCircle from "../assets/images/check-circle.svg";
 import file from "../assets/images/file.svg";
+
+type FormErrors = {
+  email?: string;
+};
+
+type ContactFormProps = {
+  onSuccess: () => void;
+};
 
 export default function Header() {
   const width = useWindowWidth();
@@ -25,14 +33,14 @@ export default function Header() {
       description: "",
     });
 
-    const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState<FormErrors>({});
 
     const handleChange = (e: any) => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const validate = () => {
-      const newErrors = {};
+      const newErrors: FormErrors = {};
 
       if (!formData.email.trim()) {
         newErrors.email = "Pflichtfeld";
@@ -73,7 +81,7 @@ export default function Header() {
     );
   };
 
-  const ContactFormWeb = ({ onSuccess }) => {
+  const ContactFormWeb = ({ onSuccess }: ContactFormProps) => {
     const { formData, errors, handleChange, handleSubmit } = useContactForm();
     const [fileName, setFileName] = useState("");
 
@@ -263,7 +271,7 @@ export default function Header() {
             <input
               type="file"
               hidden
-              onChange={(e) => setFileName(e.target.files[0]?.name || "")}
+              onChange={(e) => setFileName(e.target.files?.[0]?.name || "")}
             />
           </label>
           <span className="file-name-text">{fileName || "(Optional)"}</span>
@@ -292,7 +300,9 @@ export default function Header() {
   return (
     <>
       <header className="header">
-        <img src={konnactivLogo} alt="konnactivLogo" />
+        <Link to="/">
+    <img src={konnactivLogo} alt="konnactivLogo" />
+  </Link>
         {isMobile ? (
           <img
             src={sideBar}
@@ -312,12 +322,12 @@ export default function Header() {
             </NavLink>
 
             <NavLink
-              to="/"
+              to="/products"
               className={({ isActive }) =>
                 isActive ? "nav-bar-text active" : "nav-bar-text"
               }
             >
-              Produkte
+              Produkte & Leistungen
             </NavLink>
             <button
               className="btn-header"
@@ -355,13 +365,13 @@ export default function Header() {
             </NavLink>
 
             <NavLink
-              to="/"
+              to="/products"
               className={({ isActive }) =>
                 isActive ? "nav-bar-text active" : "nav-bar-text"
               }
               onClick={() => setIsMenuOpen(false)}
             >
-              Produkte
+              Produkte & Leistungen
             </NavLink>
             <button
               className="btn-header"
