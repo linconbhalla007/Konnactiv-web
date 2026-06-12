@@ -365,7 +365,7 @@ export default function Header() {
             </NavLink>
 
             <NavLink
-              to="/"
+              to="/products"
               className={({ isActive }) =>
                 isActive ? "nav-bar-text active" : "nav-bar-text"
               }

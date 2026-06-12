@@ -7,17 +7,22 @@ import Product from './Product/Product';
 import PrivacyPolicy from './PrivacyPolicy/PrivacyPolicy';
 import TermsAndConditions from './TermsAndConditions/TermsAndConditions';
 import Impressum from './Impressum/Impressum';
+import ScrollToTop from './ScrollToTop';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/products" element={<Product />} />
-      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-      <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-      <Route path="/contact-details" element={<Impressum />} />
-    </Routes>
+    <>
+  <ScrollToTop />
+
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/about" element={<About />} />
+    <Route path="/products" element={<Product />} />
+    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+    <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+    <Route path="/contact-details" element={<Impressum />} />
+  </Routes>
+  </>
   );
 }
 
