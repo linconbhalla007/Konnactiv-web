@@ -163,13 +163,7 @@
 }
 
 .process-steps::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 8px;
-  width: 1px;
-  height: calc(100% - 40px);
-  background: #3ea0ff;
+  content: none;
 }
 
 .process-step {
@@ -178,16 +172,21 @@
   grid-template-columns: 240px 1fr;
   column-gap: 40px;
   margin-bottom: 40px;
+  padding-bottom: 8px;
+}
+
+.process-step::after {
+  content: "";
+  position: absolute;
+  left: -13px;
+  top: 20px;
+  width: 1px;
+  height: calc(100% + 12px);
+  background: #3ea0ff;
 }
 
 .process-step.last::after {
-  content: "";
-  position: absolute;
-  left: 3px;
-  top: 14px;
-  width: 2px;
-  height: 100%;
-  background: #fff;
+  content: none;
 }
 
 .dot {
@@ -310,28 +309,27 @@
   }
 
   .process-mobile-steps::before {
-    content: "";
-    position: absolute;
-    left: 6px;
-    top: 6px;
-    width: 1px;
-    height: calc(100% - 24px);
-    background: #3ea0ff;
+    content: none;
   }
 
   .process-mobile-step {
     position: relative;
     margin-bottom: 32px;
+    padding-bottom: 8px;
+  }
+
+  .process-mobile-step::after {
+    content: "";
+    position: absolute;
+    left: -13px;
+    top: 18px;
+    width: 1px;
+    height: calc(100% + 14px);
+    background: #3ea0ff;
   }
 
   .process-mobile-step.last::after {
-    content: "";
-    position: absolute;
-    left: 4px;
-    top: 14px;
-    width: 2px;
-    height: 100%;
-    background: #fff;
+    content: none;
   }
 
   .dot-mobile {

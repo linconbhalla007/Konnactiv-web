@@ -825,7 +825,7 @@ export default function About() {
                   </div>
                 </div>
 
-                <div className="process-mobile-step mb-0">
+                <div className="process-mobile-step last mb-0">
                   <img src={dot} alt="dot" className="dot-mobile" />
                   <div className="d-flex flex-column ms-3">
                     <span className="process-step-header">
