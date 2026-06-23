@@ -1,7 +1,7 @@
 import "./Product.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import inquiry from "../assets/images/technical-inquiry.svg";
 import cableSystems from "../assets/images/cable-systems.svg";
 import product1 from "../assets/images/product1.svg";
@@ -250,6 +250,23 @@ export default function Product() {
   const width = useWindowWidth();
   const isMobile = width < 768;
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const hasOpenModal = Boolean(selectedCard) || isContactOpen;
+
+  useEffect(() => {
+    const { body, documentElement } = document;
+    const previousBodyOverflow = body.style.overflow;
+    const previousHtmlOverflow = documentElement.style.overflow;
+
+    if (hasOpenModal) {
+      body.style.overflow = "hidden";
+      documentElement.style.overflow = "hidden";
+    }
+
+    return () => {
+      body.style.overflow = previousBodyOverflow;
+      documentElement.style.overflow = previousHtmlOverflow;
+    };
+  }, [hasOpenModal]);
 
   const SuccessView = () => (
     <div className="d-flex justify-content-center align-items-center flex-column mt-3">
@@ -484,7 +501,11 @@ export default function Product() {
       </section>
 
       <section className="technical-section">
-        <img src={inquiry} alt="technical inquiry" />
+        <img
+          src={inquiry}
+          alt="technical inquiry"
+          className={isMobile ? "w-100" : ""}
+        />
 
         <span className="technical-title">Technische Anfrage stellen</span>
 

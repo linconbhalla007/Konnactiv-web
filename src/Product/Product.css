@@ -429,6 +429,7 @@ height: 20px;
     grid-template-columns: 1fr 28px;
     gap: 16px;
     padding: 24px 20px;
+    align-items: flex-start;
   }
 
   .accordion-title {
@@ -453,6 +454,10 @@ height: 20px;
 
   .accordion-icon {
     font-size: 24px;
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    align-self: flex-start;
   }
 
   /* ========================= */
