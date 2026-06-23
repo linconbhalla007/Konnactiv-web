@@ -58,11 +58,7 @@ export default function About() {
     };
 
     return (
-      <form
-        className="contact-form mt-34"
-        onSubmit={onFormSubmit}
-        ref={form}
-      >
+      <form className="contact-form mt-34" onSubmit={onFormSubmit} ref={form}>
         <div className="gender-container">
           {["Herr", "Frau", "Divers"].map((item) => (
             <label key={item} className="gender-option">
@@ -157,7 +153,7 @@ export default function About() {
         </div>
 
         <span className="file-max-size">
-          Mit Absenden akzeptieren Sie unsere AGB.
+          Mit Absenden akzeptieren Sie unsere AGBs.
         </span>
       </form>
     );
@@ -177,11 +173,7 @@ export default function About() {
     };
 
     return (
-      <form
-        className="contact-form mt-52"
-        onSubmit={onFormSubmit}
-        ref={form}
-      >
+      <form className="contact-form mt-52" onSubmit={onFormSubmit} ref={form}>
         <div className="gender-container">
           {["Herr", "Frau", "Divers"].map((item) => (
             <label key={item} className="gender-option">
@@ -273,7 +265,7 @@ export default function About() {
         </div>
 
         <span className="file-max-size">
-          Mit Absenden akzeptieren Sie unsere AGB.
+          Mit Absenden akzeptieren Sie unsere AGBs.
         </span>
       </form>
     );
@@ -300,10 +292,15 @@ export default function About() {
                 Our mission, vision, and values guide our daily actions.
               </span>
 
-              <button className="btn-about-cable"  onClick={() => {
-                setIsFormSubmitted(false);
-                setIsContactOpen(true);
-              }}>Jetzt Anfragen</button>
+              <button
+                className="btn-about-cable"
+                onClick={() => {
+                  setIsFormSubmitted(false);
+                  setIsContactOpen(true);
+                }}
+              >
+                Jetzt Anfragen
+              </button>
             </div>
           </section>
 
@@ -595,17 +592,20 @@ export default function About() {
             <div className="mission-mobile-content">
               <div className="mission-label">
                 <span className="about-horizontal-line"></span>
-                <span>Wir sind Konnectiv</span>
+                <span>Wir sind Konnactiv</span>
               </div>
 
               <span className="mission-header">
-                Our mission, vision, and values guide our daily actions.
+                Unsere Mission, Vision und Werte leiten unser tägliches Handeln.
               </span>
 
-              <button className="btn-about-cable mt-4 w-100"  onClick={() => {
-                setIsFormSubmitted(false);
-                setIsContactOpen(true);
-              }}>
+              <button
+                className="btn-about-cable mt-4 w-100"
+                onClick={() => {
+                  setIsFormSubmitted(false);
+                  setIsContactOpen(true);
+                }}
+              >
                 Jetzt Anfragen
               </button>
             </div>
@@ -636,7 +636,7 @@ export default function About() {
             </div>
 
             <span className="services-header mt-3">
-              End-to-End Kabellösungen
+              Ende-zu-Ende Kabellösungen
             </span>
 
             <span className="cable-about-para mt-4">
@@ -844,7 +844,7 @@ export default function About() {
           <Footer />
         </div>
       )}
-        {isContactOpen && (
+      {isContactOpen && (
         <div className="modal-overlay">
           <div className="modal-container">
             <img

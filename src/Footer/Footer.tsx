@@ -32,11 +32,11 @@ export default function Footer() {
           Maßgeschneiderte Kabellösungen für Industrien der nächsten Generation.
         </span>
 
-        <div className="footer-socials">
+        {/* <div className="footer-socials">
           <img src={linkedin} alt="linkedin" />
           <img src={instagram} alt="instagram" />
           <img src={facebook} alt="facebook" />
-        </div>
+        </div> */}
       </div>
 
       <div
@@ -45,7 +45,7 @@ export default function Footer() {
         }`}
       >
         <span className="copyright-text">
-          © 2025 Konnactiv. All rights reserved.
+          © 2025 Konnactiv. Alle Rechte vorbehalten.
         </span>
 
         <div className="footer-legal">

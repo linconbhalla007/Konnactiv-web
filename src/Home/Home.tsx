@@ -349,45 +349,43 @@ export default function Home() {
           </div>
 
           <section className="production home-page-padding">
-  <div className="production-layout">
-    <div className="production-left">
-      <div className="production-label">
-        <span className="horizontal-line mt-2"></span>
-        <span>Überblick</span>
-      </div>
+            <div className="production-layout">
+              <div className="production-left">
+                <div className="production-label">
+                  <span className="horizontal-line mt-2"></span>
+                  <span>Überblick</span>
+                </div>
 
-      <span className="production-text">
-        Unser Angebot an Produktionslösungen
-      </span>
+                <span className="production-text">
+                  Unser Angebot an Produktionslösungen
+                </span>
 
-      <span className="production-para">
-        Wir entwickeln und liefern maßgeschneiderte Kabelkonfektionen,
-        Baugruppen und Verbindungslösungen, die exakt auf komplexe technische
-        Anforderungen abgestimmt sind.
-      </span>
+                <span className="production-para">
+                  Wir entwickeln und liefern maßgeschneiderte Kabelkonfektionen,
+                  Baugruppen und Verbindungslösungen, die exakt auf komplexe
+                  technische Anforderungen abgestimmt sind.
+                </span>
 
-      <Link to="/products">
-        <button className="all-products-btn">
-          Kabelkonfektion ansehen
-        </button>
-      </Link>
-    </div>
+                <Link to="/products">
+                  <button className="all-products-btn">
+                    Kabelkonfektion ansehen
+                  </button>
+                </Link>
+              </div>
 
-    <div className="production-grid">
-      {products.slice(0, 4).map((item) => (
-        <div className="production-card" key={item.id}>
-          <div className="production-image-box">
-            <img src={item.img} alt={item.title} />
-          </div>
+              <div className="production-grid">
+                {products.slice(0, 4).map((item) => (
+                  <div className="production-card" key={item.id}>
+                    <div className="production-image-box">
+                      <img src={item.img} alt={item.title} />
+                    </div>
 
-          <span className="production-card-title">
-            {item.title}
-          </span>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
+                    <span className="production-card-title">{item.title}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
 
           <section className="excellence">
             <div>
@@ -451,7 +449,7 @@ export default function Home() {
                   <div className="d-flex align-items-center">
                     <img src={email} alt="email" />
                     <span className="contact-details-text">
-                      info@cableexperts.com
+                      info@konnactiv.de
                     </span>
                   </div>
                   <div className="d-flex align-items-center">
@@ -501,42 +499,40 @@ export default function Home() {
             </button>
           </div>
 
-        <section className="production">
-  <div className="production-label">
-    <span className="horizontal-line"></span>
-    <span>Überblick</span>
-  </div>
+          <section className="production">
+            <div className="production-label">
+              <span className="horizontal-line"></span>
+              <span>Überblick</span>
+            </div>
 
-  <h2 className="production-text">
-    Unser Angebot an Produktionslösungen
-  </h2>
+            <h2 className="production-text">
+              Unser Angebot an Produktionslösungen
+            </h2>
 
-  <p className="production-para">
-    Wir entwickeln und liefern maßgeschneiderte Kabelkonfektionen,
-    Baugruppen und Verbindungslösungen, die exakt auf komplexe
-    technische Anforderungen abgestimmt sind.
-  </p>
+            <p className="production-para">
+              Wir entwickeln und liefern maßgeschneiderte Kabelkonfektionen,
+              Baugruppen und Verbindungslösungen, die exakt auf komplexe
+              technische Anforderungen abgestimmt sind.
+            </p>
 
-  <div className="production-grid">
-    {products.map((item) => (
-      <div className="production-card" key={item.id}>
-        <div className="production-image-box">
-          <img src={item.img} alt={item.title} />
-        </div>
+            <div className="production-grid">
+              {products.map((item) => (
+                <div className="production-card" key={item.id}>
+                  <div className="production-image-box">
+                    <img src={item.img} alt={item.title} />
+                  </div>
 
-        <span className="production-card-title">
-          {item.title}
-        </span>
-      </div>
-    ))}
-  </div>
+                  <span className="production-card-title">{item.title}</span>
+                </div>
+              ))}
+            </div>
 
-  <Link to="/products">
-    <button className="all-products-btn production-btn">
-      Kabelkonfektion ansehen
-    </button>
-  </Link>
-</section>
+            <Link to="/products">
+              <button className="all-products-btn production-btn">
+                Kabelkonfektion ansehen
+              </button>
+            </Link>
+          </section>
 
           <div>
             <img src={cableConnector} alt="Cable connector" className="w-100" />
@@ -591,7 +587,7 @@ export default function Home() {
                 <div className="d-flex align-items-center">
                   <img src={email} alt="email" />
                   <span className="contact-details-text">
-                    info@cableexperts.com
+                    info@konnactiv.de
                   </span>
                 </div>
                 <div className="d-flex align-items-center">
